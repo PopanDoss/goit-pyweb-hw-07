@@ -5,7 +5,7 @@ from connect_db import session
 from models import Groups, Students, Teachers, Subjects, Magazine
 
 
-def query_1_avg_rating():
+def select_1():
 
     query = session.query(Students.student_name, func.round(func.avg(Magazine.rating),2).label("avg_rating"))\
         .select_from(Magazine)\
@@ -16,7 +16,7 @@ def query_1_avg_rating():
     return query
 
 
-def query_2_avg_rating_subject():
+def select_2():
 
     subject = input("Вкажіть назву предмета: ",    )
 
@@ -29,7 +29,7 @@ def query_2_avg_rating_subject():
     return query
 
 
-def query_3_avg_rating_subjects_groups():
+def select_3():
 
     subject = input("Вкажіть назву предмета: ",    )
 
@@ -44,14 +44,14 @@ def query_3_avg_rating_subjects_groups():
     return  query
 
 
-def query_4_avg_rating_all():
+def select_4():
 
     avg_rating_all =  session.query(func.round(func.avg(Magazine.rating), 2).label("avg_rating_all")).all()
 
     return  avg_rating_all
 
 
-def query_5_search_subjects_teacher():
+def select_5():
 
     teacher = input ("Вкажіть викладача: ", )
 
@@ -62,7 +62,7 @@ def query_5_search_subjects_teacher():
     
     return query
 
-def query_6_search_students_group():
+def select_6():
 
     group = input ("Вкажіть групу: ", )
 
@@ -73,7 +73,7 @@ def query_6_search_students_group():
     
     return query
 
-def query_7_search_rating_group_subject():
+def select_7():
 
     group = input ("Вкажіть групу: ", )
     subject = input ("Вкажіть предмет: ", )
@@ -86,7 +86,7 @@ def query_7_search_rating_group_subject():
     
     return query
 
-def query_8_avg_rating_teacher():
+def select_8():
 
     teacher = input ("Вкажіть викладача: ", )
 
@@ -99,7 +99,7 @@ def query_8_avg_rating_teacher():
 
     return query
 
-def query_9_student_subjects():
+def select_9():
 
     student = input ("Вкажіть студента: ", )
 
@@ -112,7 +112,7 @@ def query_9_student_subjects():
         
     return query
 
-def query_10_student_subjects_teacher():
+def select_10():
 
     student = input("Вкажіть студента: ")
     teacher = input("Вкажіть викладача: ")
@@ -131,34 +131,34 @@ def query_10_student_subjects_teacher():
 
 if __name__=="__main__":
 
-    result_1 = query_1_avg_rating()
+    result_1 = select_1()
     print(result_1)
 
-    result_2 = query_2_avg_rating_subject()
+    result_2 = select_2()
     print(result_2)
 
-    result_3 = query_3_avg_rating_subjects_groups()
+    result_3 = select_3()
     print(result_3)
 
-    result_4 = query_4_avg_rating_all()
+    result_4 = select_4()
     print(result_4)
 
-    result_5 = query_5_search_subjects_teacher()
+    result_5 = select_5()
     print(result_5)
 
-    result_6 = query_6_search_students_group()
+    result_6 = select_6()
     print(result_6)
 
-    result_7 = query_7_search_rating_group_subject()
+    result_7 = select_7()
     print(result_7)
 
-    result_8 = query_8_avg_rating_teacher()
+    result_8 = select_8()
     print(result_8)
 
-    result_9 = query_9_student_subjects()
+    result_9 = select_9()
     print(result_9)
 
-    result_10 = query_10_student_subjects_teacher()
+    result_10 = select_10()
     print(result_10)
 
     
